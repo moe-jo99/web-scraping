@@ -25,6 +25,8 @@ async def main():
             print(f"Scanning Search Page {current_page}...")
             await page.goto(url)
             await page.wait_for_timeout(20000)
+            await browser_utils.human_scroll(page)
+            await page.wait_for_timeout(3000)
             
             links = await scraper.extract_links_from_page(page)
             all_business_links.extend(links)
